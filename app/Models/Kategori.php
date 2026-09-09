@@ -12,4 +12,13 @@ class Kategori extends Model
     {
         return $this->hasMany(Barang::class);
     }
+
+    /**
+     * Relasi ke model Informasi (One to Many)
+     * 1 Kategori memiliki banyak Informasi.
+     */
+    public function informasis()
+    {
+        return $this->hasMany(Informasi::class, 'kategori_id');
+    }
 }

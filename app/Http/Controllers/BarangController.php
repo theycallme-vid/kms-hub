@@ -30,9 +30,9 @@ class BarangController extends Controller
             $barang->stok = $request->get('stok');
             $barang->kategori_id = $request->get('kategori_id');
             $barang->save();
-            return redirect('daftar-barang')->with('sukses', 'Data barang berhasil ditambahkan!');
+            return redirect('barang')->with('sukses', 'Data barang berhasil ditambahkan!');
         } catch (\Exception $e) {
-            return redirect('daftar-barang')->with('error', 'Gagal menambah data barang: ' . $e->getMessage());
+            return redirect('barang')->with('error', 'Gagal menambah data barang: ' . $e->getMessage());
         }
     }
 
@@ -40,9 +40,9 @@ class BarangController extends Controller
     public function hapus(Barang $barang){
         try {
             $barang->delete();
-            return redirect('daftar-barang')->with('sukses', 'Data barang berhasil dihapus!');
+            return redirect('barang')->with('sukses', 'Data barang berhasil dihapus!');
         } catch (\Exception $e) {
-            return redirect('daftar-barang')->with('error', 'Gagal menghapus data barang: ' . $e->getMessage());
+            return redirect('barang')->with('error', 'Gagal menghapus data barang: ' . $e->getMessage());
         }
     }
 
@@ -62,9 +62,9 @@ class BarangController extends Controller
             $barang->stok = $request->get('stok');
             $barang->kategori_id = $request->get('kategori_id');
             $barang->save();
-            return redirect('daftar-barang')->with('sukses', 'Data barang berhasil diperbarui!');
+            return redirect('barang')->with('sukses', 'Data barang berhasil diperbarui!');
         } catch (\Exception $e) {
-            return redirect('daftar-barang')->with('error', 'Gagal memperbarui data barang: ' . $e->getMessage());
+            return redirect('barang')->with('error', 'Gagal memperbarui data barang: ' . $e->getMessage());
         }
     }
 

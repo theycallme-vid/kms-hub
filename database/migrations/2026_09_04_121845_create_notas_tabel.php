@@ -16,7 +16,7 @@ return new class extends Migration
             $table->date('tanggal');
             $table->decimal('grandtotal', total:9, places:2);
             $table->unsignedBigInteger('pegawai_id');
-            $table->foreign('pegawai_id')->references('id')->on('notas');
+            $table->foreign('pegawai_id')->references('id')->on('pegawais');
             $table->unsignedBigInteger('pelanggans_id');
             $table->foreign('pelanggans_id')->references('id')->on('pelanggans'); 
         });

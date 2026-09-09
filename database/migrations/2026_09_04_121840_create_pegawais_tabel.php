@@ -16,7 +16,9 @@ return new class extends Migration
             $table->string('nama');
             $table->string('telp');
             $table->string('jabatan');
-
+            $table->string('email')->unique();
+            $table->string('password');
+            $table->enum('role', ['admin', 'user'])->default('user');
         });
     }
 
