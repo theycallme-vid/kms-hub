@@ -3,20 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use DB;
 use App\Models\Kategori;
 
 class KategoriController extends Controller
 {
-    public function tampil(){
-        $kategoris = Kategori::all();
-        return view('kategori.daftar', ['kategoris' => $kategoris]);
-    }
-
-    public function create(){
-        return view('kategori.create');
-    }
-
     public function simpan(Request $request){
         $request->validate([
             'nama_kategori' => ['required', 'regex:/^[^0-9]+$/'],
@@ -44,11 +34,6 @@ class KategoriController extends Controller
         } catch (\Exception $e) {
             return redirect('kategori')->with('error', 'Gagal menghapus data kategori: ' . $e->getMessage());
         }
-    }
-    
-
-    public function ubah(Kategori $kategori){
-        return view('kategori.ubah', ['kategori' => $kategori]);
     }
 
     public function update(Request $request) {

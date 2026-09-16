@@ -3,24 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use DB;
 use App\Models\Kategori;
 use App\Models\Barang;
 
 class BarangController extends Controller
 {
-    public function tampil()
-    {
-        $barangs = Barang::with('kategori')->get();
-        return view('barang.daftar', ['barangs' => $barangs]);
-    }
-
-    // BUAT BARANG + mengambil data kategori
-    public function create(){
-        $kategoris = Kategori::all();
-        return view('barang.create', compact('kategoris'));
-    }
-    
     // SIMPAN BARANG
     public function simpan(Request $request){
         try {
@@ -46,14 +33,7 @@ class BarangController extends Controller
         }
     }
 
-
-    public function ubah(Barang $barang)
-    {
-        $kategoris = Kategori::all();
-        return view('barang.ubah', compact('barang', 'kategoris'));
-    }
-
-    
+    // UPDATE BARANG
     public function update(Request $request) {
         try {
             $barang = Barang::find($request->get('id'));
@@ -67,8 +47,6 @@ class BarangController extends Controller
             return redirect('barang')->with('error', 'Gagal memperbarui data barang: ' . $e->getMessage());
         }
     }
-
-    
 }
 
 

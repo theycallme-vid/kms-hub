@@ -14,17 +14,6 @@ class PegawaiController extends Controller
         return view('layouts.pegawai', compact('pegawais'));
     }
 
-    public function tampil()
-    {
-        $pegawais = Pegawai::all();
-        return view('pegawai.daftar', compact('pegawais'));
-    }
-
-    public function create()
-    {
-        return view('pegawai.create');
-    }
-
     public function simpan(Request $request)
     {
         $request->validate([
@@ -69,11 +58,6 @@ class PegawaiController extends Controller
         } catch (\Exception $e) {
             return redirect('pegawai')->with('error', 'Gagal menghapus data pegawai: ' . $e->getMessage());
         }
-    }
-
-    public function ubah(Pegawai $pegawai)
-    {
-        return view('pegawai.ubah', compact('pegawai'));
     }
 
     public function update(Request $request)

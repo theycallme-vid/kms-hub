@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\UtamaController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\BarangController;  
 use App\Http\Controllers\PegawaiController;
@@ -27,12 +26,9 @@ Route::middleware(['admin'])->group(function () {
         return view('layouts.barang', compact('barangs', 'kategoris'));
     })->name('barang');
 
-    Route::get('/daftar-barang', [BarangController::class, 'tampil']);
-    Route::get('/tambah-barang', [BarangController::class, 'create']);
-    Route::post('/simpan-barang', [BarangController::class, 'simpan']);
+    Route::post('/simpan-barang', [BarangController::class, 'simpan'])->name('barang.simpan');
+    Route::put('/update-barang', [BarangController::class, 'update'])->name('barang.update');
     Route::delete('/hapus-barang/{barang}', [BarangController::class, 'hapus'])->name('barang.hapus');
-    Route::get('/ubah-barang/{barang}', [BarangController::class, 'ubah'])->name('barang.ubah');
-    Route::put('/update-barang', [BarangController::class, 'update']);
 
     // TABEL KATEGORI
     Route::get('/kategori', function () {
@@ -40,12 +36,9 @@ Route::middleware(['admin'])->group(function () {
         return view('layouts.kategori', compact('kategoris'));
     })->name('kategori');
 
-    Route::get('/daftar-kategori', [KategoriController::class, 'tampil']);
-    Route::get('/tambah-kategori', [KategoriController::class, 'create']);
-    Route::post('/simpan-kategori', [KategoriController::class, 'simpan']);
+    Route::post('/simpan-kategori', [KategoriController::class, 'simpan'])->name('kategori.simpan');
+    Route::put('/update-kategori', [KategoriController::class, 'update'])->name('kategori.update');
     Route::delete('/hapus-kategori/{kategori}', [KategoriController::class, 'hapus'])->name('kategori.hapus');
-    Route::get('/ubah-kategori/{kategori}', [KategoriController::class, 'ubah'])->name('kategori.ubah');
-    Route::put('/update-kategori', [KategoriController::class, 'update']);
 
     // TABEL PEGAWAI
     Route::get('/pegawai', function () {
@@ -53,11 +46,8 @@ Route::middleware(['admin'])->group(function () {
         return view('layouts.pegawai', compact('pegawais'));
     })->name('pegawai');
 
-    Route::get('/daftar-pegawai', [PegawaiController::class, 'tampil']);
-    Route::get('/tambah-pegawai', [PegawaiController::class, 'create']);
-    Route::post('/simpan-pegawai', [PegawaiController::class, 'simpan']);
+    Route::post('/simpan-pegawai', [PegawaiController::class, 'simpan'])->name('pegawai.simpan');
+    Route::put('/update-pegawai', [PegawaiController::class, 'update'])->name('pegawai.update');
     Route::delete('/hapus-pegawai/{pegawai}', [PegawaiController::class, 'hapus'])->name('pegawai.hapus');
-    Route::get('/ubah-pegawai/{pegawai}', [PegawaiController::class, 'ubah'])->name('pegawai.ubah');
-    Route::put('/update-pegawai', [PegawaiController::class, 'update']);
 
 });
